@@ -9,66 +9,71 @@ const Review = () => {
 
   //NOTE this is my own soltion...
 
-//   const prevPerson = () => {
-//     setInd((ind) => {
-//       let newInd = ind - 1;
-//       const l = people.length;
+  const prevPerson = () => {
+    setInd((ind) => {
+      let newInd = ind - 1;
+      const l = people.length;
       
-//       if (newInd < 0) {
-//         return l - 1;
-//       } else {
-//         return newInd;
-//       }
-//   })
-// }
-//   const nextPerson = () => {
-//     setInd((ind) => {
-//       let newInd = ind += 1;
-//       if (newInd < people.length) {
-//         return newInd
-//       } else {
-//         return 0;
-//       }
-//   })
-// }
+      if (newInd < 0) {
+        return l - 1;
+      } else {
+        return newInd;
+      }
+  })
+}
+  const nextPerson = () => {
+    setInd((ind) => {
+      let newInd = ind += 1;
+      if (newInd < people.length) {
+        return newInd
+      } else {
+        return 0;
+      }
+  })
+}
 
-//   const randPerson = () => {
-//     setInd((ind) => {
-//       const l = people.length;
-//       let newInd = Math.floor(Math.random() * l)
-//       return newInd
-//   })
-// }
+  const randPerson = () => {
+    setInd((ind) => {
+      const l = people.length;
+      let newInd = Math.floor(Math.random() * l)
+      if (newInd !== ind) {
+        return newInd
+      } else {
+        return (Math.floor(Math.random() * l))
+      }
+      
+  })
+}
   
   //NOTE updated solution from tutorial
-    const checkNumber = (number) => {
-    if (number < people.length) {
-      return 0;
-    }
-    if (number < 0) {
-      return people.length - 1;
-    }
-    return number;
-  };
-  const nextPerson = () => {
-    setIndex((index) => {
-      let newIndex = index + 1;
-      return checkNumber(newIndex);
-    });
-  };
-  const prevPerson = () => {
-    setIndex((index) => {
-      let newIndex = index - 1;
-      return checkNumber(newIndex);
-    });
-  };
-  const randPerson = () => {
-    let randomNumber = Math.floor(Math.random() * people.length);
-    if (randomNumber === index) {
-      randomNumber = index + 1;
-    }
-    setIndex(checkNumber(randomNumber));
-  };
+  //   const checkNumber = (number) => {
+  //   if (number < people.length) {
+  //     return 0;
+  //   }
+  //   if (number < 0) {
+  //     return people.length - 1;
+  //   }
+  //   return number;
+  // };
+  // const nextPerson = () => {
+  //   setInd((index) => {
+  //     let newIndex = index + 1;
+  //     return checkNumber(newIndex);
+  //   });
+  // };
+  // const prevPerson = () => {
+  //   setInd((index) => {
+  //     let newIndex = index - 1;
+  //     return checkNumber(newIndex);
+  //   });
+  // };
+  // const randPerson = () => {
+  //   let randomNumber = Math.floor(Math.random() * people.length);
+  //   if (randomNumber === ind) {
+  //     randomNumber = ind + 1;
+  //   }
+  //   return setInd(checkNumber(randomNumber));
+  // };
 
 
   return (
