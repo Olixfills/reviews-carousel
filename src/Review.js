@@ -6,39 +6,70 @@ const Review = () => {
   const [ind, setInd] = useState(0);
 
   const { id, name, job, image, text } = people[ind]
-  
-  const prevPerson = () => {
-    setInd((ind) => {
-      let newInd = ind - 1;
-      const l = people.length;
-      // console.log(l)
-      if (newInd < 0) {
-        return l - 1;
-      } else {
-        return newInd;
-      }
-  })
-}
-  const nextPerson = () => {
-    setInd((ind) => {
-      let newInd = ind += 1;
-      if (newInd < people.length) {
-        return newInd
-      } else {
-        return 0;
-      }
-  })
-}
 
+  //NOTE this is my own soltion...
+
+//   const prevPerson = () => {
+//     setInd((ind) => {
+//       let newInd = ind - 1;
+//       const l = people.length;
+      
+//       if (newInd < 0) {
+//         return l - 1;
+//       } else {
+//         return newInd;
+//       }
+//   })
+// }
+//   const nextPerson = () => {
+//     setInd((ind) => {
+//       let newInd = ind += 1;
+//       if (newInd < people.length) {
+//         return newInd
+//       } else {
+//         return 0;
+//       }
+//   })
+// }
+
+//   const randPerson = () => {
+//     setInd((ind) => {
+//       const l = people.length;
+//       let newInd = Math.floor(Math.random() * l)
+//       return newInd
+//   })
+// }
+  
+  //NOTE updated solution from tutorial
+    const checkNumber = (number) => {
+    if (number < people.length) {
+      return 0;
+    }
+    if (number < 0) {
+      return people.length - 1;
+    }
+    return number;
+  };
+  const nextPerson = () => {
+    setIndex((index) => {
+      let newIndex = index + 1;
+      return checkNumber(newIndex);
+    });
+  };
+  const prevPerson = () => {
+    setIndex((index) => {
+      let newIndex = index - 1;
+      return checkNumber(newIndex);
+    });
+  };
   const randPerson = () => {
-    setInd((ind) => {
-      const l = people.length;
-      let newInd = Math.floor(Math.random() * l)
-// console.log(newInd);
-// console.log(l);
-      return newInd
-  })
-}
+    let randomNumber = Math.floor(Math.random() * people.length);
+    if (randomNumber === index) {
+      randomNumber = index + 1;
+    }
+    setIndex(checkNumber(randomNumber));
+  };
+
 
   return (
     <article className="review" id={id}>
